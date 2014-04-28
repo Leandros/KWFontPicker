@@ -40,6 +40,7 @@ static CGFloat KWFontPickerCellHeight = 30;
         self.fontComponentIndex  = 0;
         self.sizeComponentIndex  = 1;
         self.colorComponentIndex = 2;
+        self.sizeHidden = NO;
         
         self.showsSelectionIndicator = YES;
         self.dataSource = self;
@@ -245,6 +246,9 @@ static CGFloat KWFontPickerCellHeight = 30;
 // getter (lazy initializer)
 - (NSArray*)sizeList
 {
+    if (self.sizeHidden) {
+        return @[];
+    }
     if (_sizeList.count) {
         return _sizeList;
     }
@@ -470,6 +474,9 @@ static CGFloat KWFontPickerCellHeight = 30;
 
 - (CGFloat)selectedFontSize
 {
+    if (self.sizeHidden) {
+        return 0.0f;
+    }
     CGFloat fontSize = self.minFontSize;
     
     if (self.sizeComponentIndex > -1) {
