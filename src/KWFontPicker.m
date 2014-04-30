@@ -423,7 +423,12 @@ static CGFloat KWFontPickerCellHeight = 30;
     
     if (component == self.fontComponentIndex) {
         if (self.fontList.count <= row) return nil;
-        NSString *fontName = self.fontList[row];
+        NSString *fontName;
+        if (self.fontNameList) {
+            fontName = self.fontNameList[row];
+        } else {
+            fontName = self.fontList[row];
+        }
         if ([fontName hasPrefix:@"Zapfino"]) size *= 0.667;
         font = [UIFont fontWithName:fontName size:size];
         string = self.text.length ? self.text : fontName;

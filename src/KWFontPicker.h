@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, KWFontPickerColorVariants) {
 @interface KWFontPicker : UIPickerView
 
 @property (nonatomic) NSArray *fontList;
+@property (nonatomic) NSArray *fontNameList;
 @property (nonatomic) NSArray *sizeList;
 @property (nonatomic) NSArray *colorList;
 @property (nonatomic, assign) BOOL sizeHidden;
